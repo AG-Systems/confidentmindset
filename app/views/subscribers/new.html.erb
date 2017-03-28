@@ -1,11 +1,55 @@
+<br>
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3 panel panel-default form-style">
-            <div class="panel-body">
-                <h2>Final Signup Step</h2>
-                <h4>This is the final step to give you full access to the program</h4>
-                <%= render 'form' %>
-            </div>
-        </div>
+    <div class="card">
+      <img src="http://wallpapercave.com/wp/qb4Ddyc.jpg" alt="Avatar" style="width:100%" >
+      <div class="container">
+        <h2>Premium</h2>
+        <%= render 'form' %>
+      </div>
     </div>
 </div>
+<br>
+<hr>
+<div id="continue">
+    <a href="/"><button class="btn btn-primary">Continue as free user</button></a>
+</div>
+
+<style>
+    #continue
+    {
+        margin: 0 auto;
+        text-align:center;
+        font-size: 25px;
+    }
+    .btn-primary
+    {
+        font-size: 20px;
+    }
+    .card {
+        /* Add shadows to create the "card" effect */
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: 350px;
+        margin: 0 auto;
+    }
+    
+    /* On mouse-over, add a deeper shadow */
+    .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+    
+    /* Add some padding inside the card container */
+    .container {
+        padding: 2px 16px;
+        margin: 0 auto;
+    }
+    h2
+    {
+        color: black;
+    }
+    img
+    {
+         width: 350px; 
+         height: 218px;
+    }
+</style>

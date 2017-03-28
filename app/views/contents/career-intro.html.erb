@@ -1,16 +1,27 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<% if user_signed_in? %>
+  <% if current_user.subscribed? %>
 <div class="video">
     <!-- <iframe width="889" height="500" src="https://www.youtube.com/embed/hyEsiwc0ys4?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe> -->
     <iframe width="889" height="500" src="https://www.youtube-nocookie.com/embed/pq1CGm7t97A?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 </div>
 <br/>
 <div id="title-video">
-    Intro
+    Intro to Career
 </div>
 <br>
 <div id="desc-video">
-    Welcome to ConfidentMindset!
+    Introduction to career improvement. What will you be learning.
 </div>
 <br>
 <br>
-<%= render '/contents/confidence' %>
+<%= render '/contents/career' %>
+
+<% else %>
+
+  <script type="text/javascript">
+    window.location.href="/subscribers/new"  // put your correct path in a string here
+    </script>
+<% end %>
+
+
+<% end %>

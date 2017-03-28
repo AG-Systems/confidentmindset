@@ -1,0 +1,22 @@
+<div id="playlist">
+<html ng-app="demo">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  </head>
+  <body ng-controller="appCtrl">
+    <section>
+      <div class="container">
+        <ul class="flowGrid" ng-flow-grid="demoGird" min-item-width="200">
+          <li class="flowGridItem" ng-repeat="video in career | filter:searchText">
+                  <a href="{{ video.link }}"><img ng-src="{{video.img}}"></a>
+                  <div id="item-bar-bot">
+                  <p>{{ video.name }}</p>
+              </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </body>
+</html>
+</div>

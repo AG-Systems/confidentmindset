@@ -7,12 +7,21 @@ app.controller('appCtrl',['$scope','fgDelegate',function($scope,fgDelegate){
 			img:'../confidence.jpg',
 			name:'Confidence',
 			link:'/contents/confidence-intro',
+			paid: false,
 		},
 		{
 			id:2,
+            img:'../career.png',
+			name:'Career',
+			link:'/contents/career-intro',
+			paid: true,
+		},
+		{
+			id:3,
             img:'../comingsoon.jpg',
 			name:'Coming soon',
 			link:'',
+			paid: false,
 		},
 		
 	]
@@ -31,31 +40,21 @@ app.controller('appCtrl',['$scope','fgDelegate',function($scope,fgDelegate){
 		},
 		
 	]
-
-    $scope.addItem = function(){
-    	var randomIndex = Math.floor(Math.random(0,1)* $scope.items.length)
-    	var newItem = {
-    		name:$scope.items[randomIndex].name,
-    		img:$scope.items[randomIndex].img
-    	}
-    	// add a new item;
-    	$scope.items.splice(0,0,newItem);
-
-    	// make sure ngRepeat is finished rendering
-    	$scope.$watch('$last',function(){
-			fgDelegate.getFlow('demoGird').itemsChanged();
-		});
-    }
-
-    $scope.changeWidth = function(width){
-    	var flow = fgDelegate.getFlow('demoGird')
-
-    	flow.minItemWidth += width;
-    	fgDelegate.getFlow('demoGird').refill(true);
-    }
-
-    // then you can:
-    // homePageGrid.minItemWidth = 150;
-    // homePageGrid.refill();
+	
+	$scope.career = [
+		{
+			id:1,
+			img:'../confidenceintro.jpg',
+			name:'Intro',
+			link:'/contents/career-intro',
+		},
+		{
+			id:2,
+            img:'../acceptence.jpg',
+			name:'Asking for an raise',
+			link:'/contents/accepting',
+		},
+		
+	]
 
 }]);

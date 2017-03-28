@@ -1,65 +1,8 @@
 <% if user_signed_in? %>
-  <% if  current_user.subscribed? %>
+  <% if current_user.subscribed? %>
   <br>
-  <html ng-app="demo">
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-      <style type="text/css">
-      /*------------------------*/
-      #item-bar-bot
-      {
-        background-color: white;
-        width: 218px;
-        height: 50px;
-      }
-      p
-      {
-          font-size: 20px;
-      }
-      .flowGrid
-      {
-        position: relative;padding: 0;
-        
-      }
-      .flowGrid:before,.flowGrid:after
-      {
-          content: "";
-          display: table;
-      }
-      .flowGrid:after{
-          clear:both;
-      }
-      .flowGridItem
-      { 
-        list-style: none;
-        
-      }
-      .flowGridItem img
-      {
-        width:100%;
-        
-      }
-      .flowGridColumn
-      {
-          float: left;
-          padding-left: 10px;
-      }
-      .flowGridColumn:last-of-type
-      {
-          /*padding-right: 10px;*/
-      }
-      /*---------- demo page only--------------*/
-      header{
-        background-color: #efefef;
-        margin-bottom: 25px;
-        height: 250px;
-        text-align: center;
-      }
-      </style>
-    </head>
-    <body ng-controller="appCtrl">
-      <section>
+    <body ng-app="demo">
+      <section ng-controller="appCtrl">
         <div class="container">
           <ul class="flowGrid" ng-flow-grid="demoGird" min-item-width="200" max-item-width="300">
             <li class="flowGridItem" ng-repeat="item in items | filter:searchText">
@@ -72,12 +15,32 @@
         </div>
       </section>
     </body>
-  </html>
 <% else %>
+<!-- NOT PAID -->
+<br>
+    <body ng-app="demo">
+      <section ng-controller="appCtrl">
+        <div class="container">
+          <ul class="flowGrid" ng-flow-grid="demoGird" min-item-width="200" max-item-width="300">
+            <li class="flowGridItem" ng-repeat="item in items | filter:searchText">
+                <div ng-if="item.paid" style="opacity: 0.7;">
+                    <a href="/subscribers/new"><img ng-src="{{item.img}}"></a>
+                    <div id="item-bar-bot">
+                        <p>{{ item.name }}</p>
+                    </div>
+               </div>
+              <div ng-if="item.paid == false">
+                    <a href="{{ item.link }}"><img ng-src="{{item.img}}"></a>
+                    <div id="item-bar-bot">
+                        <p>{{ item.name }}</p>
+                    </div>
+               </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </body>
 
-  <script type="text/javascript">
-    window.location.href="/subscribers/new"  // put your correct path in a string here
-  </script>
 <% end %>
 <% else %>
 <body id="login">
@@ -179,7 +142,7 @@
 	<div class="slide story" id="slide-2" data-slide="2">
 		<div class="container">
 			<div class="row title-row">
-				<div class="col-12 font-thin">For $5  <span class="font-semibold"> </span>  </div>
+				<div class="col-12 font-thin">What will you receive <span class="font-semibold"> </span>  </div>
 			</div>
 			<br>
 			<div class="row line-row">
@@ -212,6 +175,7 @@
 			</div><!-- /row -->
 		</div><!-- /container -->
 	</div><!-- /slide2 -->
+<!-- 
 <div id="aboutme">
   <br>
 <div class="featurette" id="about">
@@ -230,20 +194,44 @@
         </div>
         <br>
 </div>
-<div id="list">
+-->
+<div id="free-list">
   <br>
   <h2> Start Today </h2>
   <div class="cd-price">
 						<span class="cd-currency">$</span>
-						<span class="cd-value">5</span>
+						<span class="cd-value">0</span>
+						<span class="cd-duration-free">/mo</span>
+	</div>
+<ul class="list-group">
+  <li class="list-group-item">Free forever</li>
+  <li class="list-group-item ">Get a taste of success</li>
+  <li class="list-group-item">Access to 10 videos</li>
+  <li class="list-group-item">Be more successful</li>
+  <li class="list-group-item">Access to confidence</li>
+</ul>
+<br>
+<div class="frontpage">
+<a href="/users/sign_up">
+<button type="button" class="btn btn-primary btn-lg">Sign up</button>
+</a>
+</div>
+</div>
+
+<div id="list">
+  <br>
+  <h2> Premium </h2>
+  <div class="cd-price">
+						<span class="cd-currency">$</span>
+						<span class="cd-value">10</span>
 						<span class="cd-duration">/mo</span>
 	</div>
 <ul class="list-group">
-  <li class="list-group-item">Improve your confidence</li>
-  <li class="list-group-item">Redfine yourself</li>
-  <li class="list-group-item">Improve relationships</li>
-  <li class="list-group-item">Be more successful</li>
-  <li class="list-group-item">Be the best you</li>
+  <li class="list-group-item">Full access</li>
+  <li class="list-group-item">New videos added weekly</li>
+  <li class="list-group-item">24/7 Support</li>
+  <li class="list-group-item">Cancel anytime</li>
+  <li class="list-group-item">Premium content</li>
 </ul>
 <br>
 <div class="frontpage">
@@ -252,6 +240,8 @@
 </a>
 </div>
 </div>
+
+
 
 </body>
 <% end %>
